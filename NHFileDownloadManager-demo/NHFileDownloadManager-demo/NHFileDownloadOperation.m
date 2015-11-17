@@ -82,6 +82,9 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
     
     return downLoadTask;
 }
+- (void)resume {
+    [self.downloadTask resume];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:NHFileDownloadProgressKeyPath] && self.progressHandler) {

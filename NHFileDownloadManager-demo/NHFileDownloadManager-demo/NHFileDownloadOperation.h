@@ -36,4 +36,5 @@ typedef void (^FailureBlock) (NSError *error);
                                              progress:(ProgressBlock)progressHandler
                                            completion:(CompletionBlock)completionHanlder
                                               failure:(FailureBlock)failureHandler;
+- (void)resume;
 @end

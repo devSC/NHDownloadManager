@@ -22,13 +22,16 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FCFileManager (1.0.17)
 
 DEPENDENCIES:
   - AFDownloadRequestOperation
   - AFNetworking
+  - FCFileManager
 
 SPEC CHECKSUMS:
   AFDownloadRequestOperation: 748a1643423e1ddb23f2178f778087d4f0ae8ac7
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  FCFileManager: 8bfc931ce2a6223676147e9baf0e8a65c691eca6
 
 COCOAPODS: 0.39.0

@@ -34,11 +34,6 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
 @synthesize progress = _progress;
 @synthesize downloadTask = _downloadTask;
 
-- (void)dealloc
-{
-    [self removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
-}
-
 - (instancetype)init
 {
     return [self initWithSessionConfiguration:nil];
@@ -76,6 +71,8 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
         else if (completionHanlder) {
             completionHanlder(filePath);
         }
+        
+        [progress removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
     }];
     
     [progress addObserver:self forKeyPath:NHFileDownloadProgressKeyPath options:NSKeyValueObservingOptionNew context:nil];

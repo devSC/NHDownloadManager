@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <AFNetworking.h>
-#import <AFDownloadRequestOperation.h>
+#import "NHFileDownloadManager.h"
+
 #import <FCFileManager.h>
 //http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg
 //@"http://115.238.175.14/music.qqvideo.tc.qq.com/e001845yise.mp4?type=mp4&fmt=mp4&vkey=C62C8F4593AEBCB8252C53B9852DF5D5A97A4D98316A41610517283564F4A3B975970AEE10A13C318F420C9026A9F99A07BE06E56EFA0C92D5D5A3272C1CF24C54604F6BB98ED8533AA18AA03176B939EB05C19B98BE15EB"
-static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg";
+static NSString *imageUrlString = @"http://115.238.175.14/music.qqvideo.tc.qq.com/e001845yise.mp4?type=mp4&fmt=mp4&vkey=C62C8F4593AEBCB8252C53B9852DF5D5A97A4D98316A41610517283564F4A3B975970AEE10A13C318F420C9026A9F99A07BE06E56EFA0C92D5D5A3272C1CF24C54604F6BB98ED8533AA18AA03176B939EB05C19B98BE15EB";
 @interface ViewController ()
 
 @end
@@ -23,6 +23,16 @@ static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b6
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
+                                                         progress:^(float progress) {
+                                                             NSLog(@"%f", progress);
+                                                         }
+                                                          success:^(NSURL *fileUrl) {
+                                                             NSLog(@"%@", fileUrl);
+                                                          } failure:^(NSError *error) {
+                                                              NSLog(@"%@", error.description);
+
+                                                          }];
     
     
 //    NSString *filePath = [FCFileManager pathForApplicationSupportDirectoryWithPath:@"ss.mp4"];
@@ -46,7 +56,7 @@ static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b6
 //        
 //    }];
     
-    NSLog(@"%@", progress);
+//    NSLog(@"%@", progress);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {

@@ -1,5 +1,5 @@
 //
-//  NHFileDownloadOperation.h
+//  NHFileDownloadSession.h
 //  NHFileDownloadManager-demo
 //
 //  Created by Wilson Yuan on 15/11/17.
@@ -9,28 +9,32 @@
 #import <Foundation/Foundation.h>
 #import <AFURLSessionManager.h>
 
-typedef void (^ProgressBlock) (CGFloat progress);
+typedef void (^ProgressBlock) (float progress);
 typedef void (^CompletionBlock) (NSURL *fileUrl);
 typedef void (^FailureBlock) (NSError *error);
 
-@interface NHFileDownloadOperation : NSOperation
+@interface NHFileDownloadSession : NSObject
 
 @property (strong, readonly, nonatomic) NSURLResponse *response;
 
 @property (strong, readonly, nonatomic) NSURLRequest *urlRequest;
 
-@property (strong, readonly, nonatomic) NSURLSessionConfiguration *configuration;
-
 @property (strong, readonly, nonatomic) AFURLSessionManager *manager;
-
-@property (strong, readonly, nonatomic) NSProgress *progress;
-
-@property (strong, readonly, nonatomic) NSURLSessionDownloadTask *downloadTask;
-
 
 - (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration;
 
 
+/**
+ *  下载文件调用方法
+ *
+ *  @param requset           请求对象
+ *  @param path              这里是文件存放的文件夹路径
+ *  @param progressHandler   下载进度回调
+ *  @param completionHanlder 下载成功后回调
+ *  @param failureHandler    下载失败后回调
+ *
+ *  @return NSURLSessionDownloadTask instance type
+ */
 - (NSURLSessionDownloadTask *)downloadFileWithRequest:(NSURLRequest *)requset
                                        distinationUrl:(NSURL *)path
                                              progress:(ProgressBlock)progressHandler

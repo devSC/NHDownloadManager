@@ -6,19 +6,19 @@
 //  Copyright © 2015年 Wilson-Yuan. All rights reserved.
 //
 
-#import "NHFileDownloadOperation.h"
-@interface NHFileDownloadOperation ()
+#import "NHFileDownloadSession.h"
+@interface NHFileDownloadSession ()
 
 @property (strong, nonatomic) NSURLRequest *urlRequest;
-
-@property (strong, nonatomic) NSURLSessionConfiguration *configuration;
 
 @property (strong, nonatomic) AFURLSessionManager *manager;
 
 @property (strong, nonatomic) NSURLSessionDownloadTask *downloadTask;
 
 @property (copy, nonatomic) CompletionBlock completionHandler;
+
 @property (copy, nonatomic) FailureBlock failureHandler;
+
 @property (copy, nonatomic) ProgressBlock progressHandler;
 
 
@@ -26,12 +26,13 @@
 
 static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
 
-@implementation NHFileDownloadOperation
-
+@implementation NHFileDownloadSession
+- (void)dealloc
+{
+    
+}
 @synthesize urlRequest = _urlRequest;
-@synthesize configuration = _configuration;
 @synthesize manager = _manager;
-@synthesize progress = _progress;
 @synthesize downloadTask = _downloadTask;
 
 - (instancetype)init
@@ -60,32 +61,53 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
     
     NSProgress *progress = [NSProgress progressWithTotalUnitCount:1];
     
-    self.progressHandler = [progress copy];
+    self.progressHandler = [progressHandler copy];
+    self.urlRequest = requset;
     
-    NSURLSessionDownloadTask *downLoadTask = [self.manager downloadTaskWithRequest:requset progress:&progress destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        return path;
+//    __weak typeof(self) wSelf = self;
+    
+    self.downloadTask = [self.manager downloadTaskWithRequest:requset progress:&progress destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        
+        return [path URLByAppendingPathComponent:[response suggestedFilename]];
+        
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        
+//        __strong typeof(wSelf) self = wSelf;
         if (error && failureHandler) {
             failureHandler(error);
         }
         else if (completionHanlder) {
             completionHanlder(filePath);
         }
-        
-        [progress removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
+//        [progress removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
     }];
     
-    [progress addObserver:self forKeyPath:NHFileDownloadProgressKeyPath options:NSKeyValueObservingOptionNew context:nil];
+    [self.downloadTask resume];
     
-    return downLoadTask;
+    [progress addObserver:self forKeyPath:NHFileDownloadProgressKeyPath options:NSKeyValueObservingOptionNew context:NULL];
+
+    return self.downloadTask;
 }
 - (void)resume {
-    [self.downloadTask resume];
+//    [self.downloadTask resume];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+//    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     if ([keyPath isEqualToString:NHFileDownloadProgressKeyPath] && self.progressHandler) {
-        self.progressHandler([change[@"new"] floatValue]);
+        CGFloat progress = [change[@"new"] floatValue];
+        self.progressHandler(progress);
+        if (progress == 1) {
+            @try {
+                [object removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"%@", exception);
+            }
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

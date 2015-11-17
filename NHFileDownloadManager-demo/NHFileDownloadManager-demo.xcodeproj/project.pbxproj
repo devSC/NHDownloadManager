@@ -15,7 +15,7 @@
 		C85A48761BFACCE00058F508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85A48741BFACCE00058F508 /* LaunchScreen.storyboard */; };
 		C85A48811BFACCE00058F508 /* NHFileDownloadManager_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A48801BFACCE00058F508 /* NHFileDownloadManager_demoTests.m */; };
 		C85A488D1BFAF1EA0058F508 /* NHFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */; };
-		C85A48901BFAF2A80058F508 /* NHFileDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A488F1BFAF2A80058F508 /* NHFileDownloadOperation.m */; };
+		C85A48901BFAF2A80058F508 /* NHFileDownloadSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */; };
 		E0857DB044718CE236FBA01C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F6FC1BC7C412BCB1D80A2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +47,10 @@
 		C85A48821BFACCE00058F508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C85A488B1BFAF1EA0058F508 /* NHFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadManager.h; sourceTree = "<group>"; };
 		C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadManager.m; sourceTree = "<group>"; };
-		C85A488E1BFAF2A80058F508 /* NHFileDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadOperation.h; sourceTree = "<group>"; };
-		C85A488F1BFAF2A80058F508 /* NHFileDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadOperation.m; sourceTree = "<group>"; };
+		C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadSession.h; sourceTree = "<group>"; };
+		C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadSession.m; sourceTree = "<group>"; };
 		DB80AF9FC10343833769C736 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FEEAA4381BFB7481006B0745 /* NHFileDownloadHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +108,11 @@
 				C85A486A1BFACCE00058F508 /* AppDelegate.m */,
 				C85A486C1BFACCE00058F508 /* ViewController.h */,
 				C85A486D1BFACCE00058F508 /* ViewController.m */,
+				FEEAA4381BFB7481006B0745 /* NHFileDownloadHeader.h */,
 				C85A488B1BFAF1EA0058F508 /* NHFileDownloadManager.h */,
 				C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */,
-				C85A488E1BFAF2A80058F508 /* NHFileDownloadOperation.h */,
-				C85A488F1BFAF2A80058F508 /* NHFileDownloadOperation.m */,
+				C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */,
+				C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */,
 				C85A486F1BFACCE00058F508 /* Main.storyboard */,
 				C85A48721BFACCE00058F508 /* Assets.xcassets */,
 				C85A48741BFACCE00058F508 /* LaunchScreen.storyboard */,
@@ -298,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C85A48901BFAF2A80058F508 /* NHFileDownloadOperation.m in Sources */,
+				C85A48901BFAF2A80058F508 /* NHFileDownloadSession.m in Sources */,
 				C85A486E1BFACCE00058F508 /* ViewController.m in Sources */,
 				C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */,
 				C85A48681BFACCE00058F508 /* main.m in Sources */,

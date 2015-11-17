@@ -64,22 +64,18 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
     self.progressHandler = [progressHandler copy];
     self.urlRequest = requset;
     
-//    __weak typeof(self) wSelf = self;
-    
     self.downloadTask = [self.manager downloadTaskWithRequest:requset progress:&progress destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         
         return [path URLByAppendingPathComponent:[response suggestedFilename]];
         
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         
-//        __strong typeof(wSelf) self = wSelf;
         if (error && failureHandler) {
             failureHandler(error);
         }
         else if (completionHanlder) {
             completionHanlder(filePath);
         }
-//        [progress removeObserver:self forKeyPath:NHFileDownloadProgressKeyPath];
     }];
     
     [self.downloadTask resume];
@@ -88,12 +84,8 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
 
     return self.downloadTask;
 }
-- (void)resume {
-//    [self.downloadTask resume];
-}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-//    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     if ([keyPath isEqualToString:NHFileDownloadProgressKeyPath] && self.progressHandler) {
         CGFloat progress = [change[@"new"] floatValue];
         self.progressHandler(progress);
@@ -110,29 +102,4 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
-
-/*
-- (void)start {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSURL *url = [NSURL URLWithString:@"sss"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSProgress *progress = [NSProgress progressWithTotalUnitCount:10];
-    
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:&progress destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        
-    }];
-    
-    [downloadTask resume];
-    
-    [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:nil];
-
-}
- */
 @end

@@ -9,17 +9,21 @@
 #import "NHFileDownloadManager.h"
 #import "NHFileDownloadSession.h"
 
+@interface NHFileDownloadManager ()
+
+@property (strong, nonatomic) NSMutableArray *downLoadTasks;
+
+@end
+
 @implementation NHFileDownloadManager
-{
-    NHFileDownloadSession *session;
-}
+
 SingletonImplementationWithClass
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        
+        self.downLoadTasks = [NSMutableArray array];
     }
     return self;
 }
@@ -32,15 +36,18 @@ SingletonImplementationWithClass
     if (!string) {
         return nil;
     }
-    
-    session = [[NHFileDownloadSession alloc] init];
+    NHFileDownloadSession *session = [[NHFileDownloadSession alloc] init];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
-    //获得地址
     NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     
-    [session downloadFileWithRequest:request distinationUrl:documentsDirectoryURL progress:progressHandler completion:successHandler failure:failureHandler];
+    [session downloadFileWithRequest:request distinationUrl:documentsDirectoryURL progress:progressHandler completion:^(NSURL *fileUrl) {
+        successHandler(fileUrl);
+        
+        [self.downLoadTasks removeObject:session];
+        
+    } failure:failureHandler];
     
-    [session resume];
+    [self.downLoadTasks addObject:session];
     
     return session;
 }

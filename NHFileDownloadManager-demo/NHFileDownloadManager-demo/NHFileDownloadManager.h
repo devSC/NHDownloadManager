@@ -32,9 +32,9 @@ SingletonDeclarationWithClass
  *  @return NHFileDownloadSession instance
  */
 - (NHFileDownloadSession *)downloadWithUrlStirng:(NSString *)string
-                                          progress:(ProgressBlock)progressHandler
-                                           success:(SuccessBlock)successHandler
-                                           failure:(FailureBlock)failureHandler;
+                                        progress:(ProgressBlock)progressHandler
+                                         success:(SuccessBlock)successHandler
+                                         failure:(FailureBlock)failureHandler;
 
 
 @end

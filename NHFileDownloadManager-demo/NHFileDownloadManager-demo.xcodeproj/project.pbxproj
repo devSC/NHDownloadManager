@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8595B0B1BFC11A400CF79DB /* NHFileDirectoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */; };
 		C85A48681BFACCE00058F508 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A48671BFACCE00058F508 /* main.m */; };
 		C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486A1BFACCE00058F508 /* AppDelegate.m */; };
 		C85A486E1BFACCE00058F508 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486D1BFACCE00058F508 /* ViewController.m */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		1A2F6FC1BC7C412BCB1D80A2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B625B6FA88C15EF1FDF30C84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C8595B091BFC11A400CF79DB /* NHFileDirectoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDirectoryManager.h; sourceTree = "<group>"; };
+		C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDirectoryManager.m; sourceTree = "<group>"; };
 		C85A48631BFACCE00058F508 /* NHFileDownloadManager-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NHFileDownloadManager-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85A48671BFACCE00058F508 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C85A48691BFACCE00058F508 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				C85A486C1BFACCE00058F508 /* ViewController.h */,
 				C85A486D1BFACCE00058F508 /* ViewController.m */,
 				FEEAA4381BFB7481006B0745 /* NHFileDownloadHeader.h */,
+				C8595B091BFC11A400CF79DB /* NHFileDirectoryManager.h */,
+				C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */,
 				C85A488B1BFAF1EA0058F508 /* NHFileDownloadManager.h */,
 				C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */,
 				C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */,
@@ -303,6 +308,7 @@
 				C85A48901BFAF2A80058F508 /* NHFileDownloadSession.m in Sources */,
 				C85A486E1BFACCE00058F508 /* ViewController.m in Sources */,
 				C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */,
+				C8595B0B1BFC11A400CF79DB /* NHFileDirectoryManager.m in Sources */,
 				C85A48681BFACCE00058F508 /* main.m in Sources */,
 				C85A488D1BFAF1EA0058F508 /* NHFileDownloadManager.m in Sources */,
 			);

@@ -21,4 +21,5 @@ return instance; \
 }
 
 
+
 #endif /* NHFileDownloadHeader_h */

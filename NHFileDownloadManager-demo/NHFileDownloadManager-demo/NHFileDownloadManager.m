@@ -9,6 +9,7 @@
 #import "NHFileDownloadManager.h"
 #import "NHFileDownloadSession.h"
 
+#import "NHFileDirectoryManager.h"
 @interface NHFileDownloadManager ()
 
 @property (strong, nonatomic) NSMutableArray *downLoadTasks;
@@ -28,7 +29,6 @@ SingletonImplementationWithClass
     return self;
 }
 
-
 - (NHFileDownloadSession *)downloadWithUrlStirng:(NSString *)string
                                           progress:(ProgressBlock)progressHandler
                                            success:(SuccessBlock)successHandler
@@ -38,9 +38,12 @@ SingletonImplementationWithClass
     }
     NHFileDownloadSession *session = [[NHFileDownloadSession alloc] init];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     
-    [session downloadFileWithRequest:request distinationUrl:documentsDirectoryURL progress:progressHandler completion:^(NSURL *fileUrl) {
+    //文件路径
+    NSURL *url = [NSURL fileURLWithPath:[NHFileDirectoryManager chatDirectoryPathForUid:@"99"]];
+    
+    //下载成功后, 需不需要做转码
+    [session downloadFileWithRequest:request distinationUrl:url progress:progressHandler completion:^(NSURL *fileUrl) {
         successHandler(fileUrl);
         
         [self.downLoadTasks removeObject:session];

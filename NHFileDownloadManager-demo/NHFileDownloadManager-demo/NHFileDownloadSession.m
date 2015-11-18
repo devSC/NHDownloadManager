@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) AFURLSessionManager *manager;
 
+@property (strong, nonatomic) NSURLResponse *response;
+
 @property (strong, nonatomic) NSURLSessionDownloadTask *downloadTask;
 
 @property (copy, nonatomic) CompletionBlock completionHandler;
@@ -25,6 +27,7 @@
 @end
 
 static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
+static NSInteger const kNHFileDownloadRequestTimeOutInterver = 15;
 
 @implementation NHFileDownloadSession
 - (void)dealloc
@@ -34,6 +37,7 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
 @synthesize urlRequest = _urlRequest;
 @synthesize manager = _manager;
 @synthesize downloadTask = _downloadTask;
+@synthesize response = _response;
 
 - (instancetype)init
 {
@@ -47,6 +51,8 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
     }
     if (!configuration) {
         configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        configuration.timeoutIntervalForRequest = kNHFileDownloadRequestTimeOutInterver;
+        configuration.allowsCellularAccess = YES;
     }
     self.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -69,6 +75,8 @@ static NSString *NHFileDownloadProgressKeyPath = @"fractionCompleted";
         return [path URLByAppendingPathComponent:[response suggestedFilename]];
         
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        
+        self.response = response;
         
         if (error && failureHandler) {
             failureHandler(error);

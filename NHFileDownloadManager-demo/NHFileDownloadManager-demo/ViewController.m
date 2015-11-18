@@ -12,7 +12,7 @@
 #import <FCFileManager.h>
 //http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg
 //@"http://115.238.175.14/music.qqvideo.tc.qq.com/e001845yise.mp4?type=mp4&fmt=mp4&vkey=C62C8F4593AEBCB8252C53B9852DF5D5A97A4D98316A41610517283564F4A3B975970AEE10A13C318F420C9026A9F99A07BE06E56EFA0C92D5D5A3272C1CF24C54604F6BB98ED8533AA18AA03176B939EB05C19B98BE15EB"
-static NSString *imageUrlString = @"http://115.238.175.14/music.qqvideo.tc.qq.com/e001845yise.mp4?type=mp4&fmt=mp4&vkey=C62C8F4593AEBCB8252C53B9852DF5D5A97A4D98316A41610517283564F4A3B975970AEE10A13C318F420C9026A9F99A07BE06E56EFA0C92D5D5A3272C1CF24C54604F6BB98ED8533AA18AA03176B939EB05C19B98BE15EB";
+static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg";
 @interface ViewController ()
 
 @end
@@ -34,7 +34,28 @@ static NSString *imageUrlString = @"http://115.238.175.14/music.qqvideo.tc.qq.co
 
                                                           }];
     
-    
+//    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
+//                                                         progress:^(float progress) {
+//                                                             NSLog(@"1---%f", progress);
+//                                                         }
+//                                                          success:^(NSURL *fileUrl) {
+//                                                              NSLog(@"1---%@", fileUrl);
+//                                                          } failure:^(NSError *error) {
+//                                                              NSLog(@"1---%@", error.description);
+//                                                              
+//                                                          }];
+//
+//    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
+//                                                         progress:^(float progress) {
+//                                                             NSLog(@"2---%f", progress);
+//                                                         }
+//                                                          success:^(NSURL *fileUrl) {
+//                                                              NSLog(@"2---%@", fileUrl);
+//                                                          } failure:^(NSError *error) {
+//                                                              NSLog(@"2---%@", error.description);
+//                                                              
+//                                                          }];
+
 //    NSString *filePath = [FCFileManager pathForApplicationSupportDirectoryWithPath:@"ss.mp4"];
 //    NSString *filePath = [FCFileManager pathForApplicationSupportDirectoryWithPath:@"ss.mp4"];
 //    

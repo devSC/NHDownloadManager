@@ -46,7 +46,6 @@ SingletonImplementationWithClass
     //文件路径
     NSURL *url = [NSURL fileURLWithPath:[NHFileManager chatDirectoryPathForUid:@"99"]];
     
-    //下载成功后, 需不需要做转码
     [session downloadFileWithRequest:request distinationUrl:url progress:progressHandler completion:^(NSURL *fileUrl) {
         successHandler(fileUrl);
         [self.downLoadTasks removeObject:session];

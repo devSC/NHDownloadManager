@@ -8,7 +8,7 @@
 
 #import "NHFileDownloadManager.h"
 #import "NHFileDownloadSession.h"
-#import "NHFileDirectoryManager.h"
+#import "NHFileManager.h"
 
 #import <YYCache.h>
 
@@ -44,7 +44,7 @@ SingletonImplementationWithClass
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
     
     //文件路径
-    NSURL *url = [NSURL fileURLWithPath:[NHFileDirectoryManager chatDirectoryPathForUid:@"99"]];
+    NSURL *url = [NSURL fileURLWithPath:[NHFileManager chatDirectoryPathForUid:@"99"]];
     
     //下载成功后, 需不需要做转码
     [session downloadFileWithRequest:request distinationUrl:url progress:progressHandler completion:^(NSURL *fileUrl) {

@@ -12,10 +12,18 @@
 @interface NHFileCache : NSObject
 SingletonDeclarationWithClass
 
-- (void)queryDiskCacheForKey:(NSString *)key done:(void(^)(NSDictionary *fileInfo))doneBlock;
+/**
+ *  获得缓存信息
+ *
+ *  @param key       <#key description#>
+ *  @param doneBlock <#doneBlock description#>
+ */
+- (void)queryCacheForKey:(NSString *)key done:(void(^)(NSDictionary *fileInfo))doneBlock;
 
-- (void)cacheObject:(id)object forKey:(id)key;
+- (void)cacheObject:(id<NSCoding>)object forKey:(id)key;
 
-- (NSDictionary *)dealFileWithFilePath:(NSString *)filePath;
+- (id)objectForKey:(id)key;
+
+- (NSDictionary *)dealFileAtPath:(NSString *)filePath cacheForKey:(NSString *)key;
 
 @end

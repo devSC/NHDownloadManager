@@ -19,7 +19,7 @@
 		C829E8F11BFDA0B9000BC8B5 /* NHAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8F01BFDA0B9000BC8B5 /* NHAudioConverter.m */; };
 		C829E8F31BFDA0E5000BC8B5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C829E8F21BFDA0E5000BC8B5 /* AVFoundation.framework */; };
 		C829E8FC1BFDAA84000BC8B5 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8FB1BFDAA84000BC8B5 /* NSString+UUID.m */; };
-		C8595B0B1BFC11A400CF79DB /* NHFileDirectoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */; };
+		C8595B0B1BFC11A400CF79DB /* NHFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8595B0A1BFC11A400CF79DB /* NHFileManager.m */; };
 		C85A48681BFACCE00058F508 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A48671BFACCE00058F508 /* main.m */; };
 		C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486A1BFACCE00058F508 /* AppDelegate.m */; };
 		C85A486E1BFACCE00058F508 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486D1BFACCE00058F508 /* ViewController.m */; };
@@ -70,8 +70,8 @@
 		C829E8F21BFDA0E5000BC8B5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C829E8FA1BFDAA84000BC8B5 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
 		C829E8FB1BFDAA84000BC8B5 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
-		C8595B091BFC11A400CF79DB /* NHFileDirectoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDirectoryManager.h; sourceTree = "<group>"; };
-		C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDirectoryManager.m; sourceTree = "<group>"; };
+		C8595B091BFC11A400CF79DB /* NHFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileManager.h; sourceTree = "<group>"; };
+		C8595B0A1BFC11A400CF79DB /* NHFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileManager.m; sourceTree = "<group>"; };
 		C85A48631BFACCE00058F508 /* NHFileDownloadManager-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NHFileDownloadManager-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85A48671BFACCE00058F508 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C85A48691BFACCE00058F508 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 				C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */,
 				C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */,
 				C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */,
-				C8595B091BFC11A400CF79DB /* NHFileDirectoryManager.h */,
-				C8595B0A1BFC11A400CF79DB /* NHFileDirectoryManager.m */,
+				C8595B091BFC11A400CF79DB /* NHFileManager.h */,
+				C8595B0A1BFC11A400CF79DB /* NHFileManager.m */,
 				C85A486F1BFACCE00058F508 /* Main.storyboard */,
 				C85A48721BFACCE00058F508 /* Assets.xcassets */,
 				C85A48741BFACCE00058F508 /* LaunchScreen.storyboard */,
@@ -418,7 +418,7 @@
 				C829E8EE1BFDA0A8000BC8B5 /* VoiceConverter.mm in Sources */,
 				C81A562D1BFDE1B8009B3C81 /* NHAudioTool+Helper.m in Sources */,
 				C829E8FC1BFDAA84000BC8B5 /* NSString+UUID.m in Sources */,
-				C8595B0B1BFC11A400CF79DB /* NHFileDirectoryManager.m in Sources */,
+				C8595B0B1BFC11A400CF79DB /* NHFileManager.m in Sources */,
 				C829E8EB1BFDA0A8000BC8B5 /* amrFileCodec.mm in Sources */,
 				C85A48681BFACCE00058F508 /* main.m in Sources */,
 				C81A56281BFDD471009B3C81 /* NSString+MD5.m in Sources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +16,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gk0-k5-ruh">
+                                <rect key="frame" x="246" y="453" width="108" height="30"/>
+                                <animations/>
+                                <state key="normal" title="download video"/>
+                                <connections>
+                                    <action selector="download:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lrp-0B-fmc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gm1-mp-nTg">
+                                <rect key="frame" x="252" y="415" width="97" height="30"/>
+                                <animations/>
+                                <state key="normal" title="download amr"/>
+                                <connections>
+                                    <action selector="downloadAmr:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VCV-Po-Ir0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gk0-k5-ruh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6HG-C1-Ibc"/>
+                            <constraint firstItem="gm1-mp-nTg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CE6-6g-aun"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gk0-k5-ruh" secondAttribute="bottom" constant="117" id="bVi-D5-dGI"/>
+                            <constraint firstItem="Gk0-k5-ruh" firstAttribute="top" secondItem="gm1-mp-nTg" secondAttribute="bottom" constant="8" id="u9l-Fq-EyC"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

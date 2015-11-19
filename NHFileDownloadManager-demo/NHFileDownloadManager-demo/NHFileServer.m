@@ -10,7 +10,7 @@
 
 #import "NHFileDownloadManager.h"
 
-#import "NHFileDirectoryManager.h"
+#import "NHFileManager.h"
 
 
 #import "NHAudioConverter.h"
@@ -35,53 +35,31 @@ SingletonImplementationWithClass
 {
     self = [super init];
     if (self) {
-
+        self.cache = [[NHFileCache alloc] init];
     }
     return self;
 }
-
-
 
 - (void)server_fileInfoWithUrlString:(NSString *)urlString
                             progress:(ProgressBlock)progressHandler
                              success:(ServerSuccessBlock)successHandler
                              failure:(FailureBlock)failureHandler {
     
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        //0.检查文件是否下载过,
-//        NSDictionary *cachedInfo = [self.cache objectForKey:urlString];
-        //1.检查文件是否存在
-//        if ([cachedInfo objectForKey:@"filePath"]) {
-//
-//        }
-        if (1) {
-            [kNHFileDownloadManager downloadWithUrlStirng:urlString progress:progressHandler success:^(NSURL *fileUrl) {
-                successHandler([self.cache dealFileWithFilePath:fileUrl.path]);
-            } failure:^(NSError *error) {
-                
-            }];
+    [self.cache queryCacheForKey:urlString done:^(NSDictionary *fileInfo) {
+        if (fileInfo) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                progressHandler(1.0);
+                successHandler(fileInfo);
+            });
         }
         else {
-            //
+            [kNHFileDownloadManager downloadWithUrlStirng:urlString progress:progressHandler success:^(NSURL *fileUrl) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    successHandler([self.cache dealFileAtPath:fileUrl.path cacheForKey:urlString]);
+                });
+            } failure:failureHandler];
         }
-//    });
-    
-    
-    //2.不存在就下载,并且返回下载信息
-    
-    //3.下载完成后,保存下载信息
-    
+    }];
 }
-
-
-
-
-//- (YYMemoryCache *)cache {
-//    if (!_cache) {
-//        _cache = [[YYMemoryCache alloc] init];
-//    }
-//    return _cache;
-//}
 
 @end

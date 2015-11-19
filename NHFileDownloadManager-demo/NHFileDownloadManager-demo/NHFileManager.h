@@ -1,5 +1,5 @@
 //
-//  NHFileDirectoryManager.h
+//  NHFileManager.h
 //  NHFileDownloadManager-demo
 //
 //  Created by Wilson Yuan on 15/11/18.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NHFileDirectoryManager : NSObject
+@interface NHFileManager : NSObject
 
 
 + (NSString *)documentPath;

@@ -1,18 +1,18 @@
 //
-//  NHFileDirectoryManager.m
+//  NHFileManager.m
 //  NHFileDownloadManager-demo
 //
 //  Created by Wilson Yuan on 15/11/18.
 //  Copyright © 2015年 Wilson-Yuan. All rights reserved.
 //
 
-#import "NHFileDirectoryManager.h"
+#import "NHFileManager.h"
 #import <FCFileManager.h>
 
 static NSString *kNHFileManagerChatDirectoryName = @"Chat/";
 static NSString *kTempUID = @"89229";
 
-@implementation NHFileDirectoryManager
+@implementation NHFileManager
 
 
 + (NSString *)documentPath {
@@ -83,10 +83,6 @@ static NSString *kTempUID = @"89229";
         return nil;
     }
 }
-
-//+ (NSString *)pathByFileName:(NSString *)fileName ofType:(NSString *)type {
-//    return [self uidDirectoryPathByUid:<#(NSString *)#>]
-//}
 
 + (NSUInteger)fileSizeAtPath:(NSString *)filePath {
     

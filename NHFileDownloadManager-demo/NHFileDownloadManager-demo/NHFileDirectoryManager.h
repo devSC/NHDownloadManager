@@ -10,6 +10,11 @@
 
 @interface NHFileDirectoryManager : NSObject
 
+
++ (NSString *)uidDirectoryPathByUid:(NSString *)uid;
+
 + (NSString *)chatDirectoryPathForUid:(NSString *)uid;
+
++ (NSDictionary *)attribuateOfItemAtPath:(NSString *)path;
 
 @end

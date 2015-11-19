@@ -52,7 +52,6 @@
     for(NSString *directory in directories)
     {
         NSRange indexOfDirectoryInPath = [path rangeOfString:directory];
-        
         if(indexOfDirectoryInPath.location == 0)
         {
             return directory;

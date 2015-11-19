@@ -1,3 +1,4 @@
 pod 'AFNetworking'
 pod "FCFileManager"
 pod 'AFDownloadRequestOperation'
+pod "YYCache"

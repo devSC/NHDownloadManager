@@ -9,7 +9,7 @@
 #import "NHFileDirectoryManager.h"
 #import <FCFileManager.h>
 
-static NSString *kNHFileManagerChatDirectoryName = @"Chat";
+static NSString *kNHFileManagerChatDirectoryName = @"Chat/";
 static NSString *kTempUID = @"89229";
 
 @implementation NHFileDirectoryManager
@@ -18,14 +18,12 @@ static NSString *kTempUID = @"89229";
 //可以获得各个文件存放的文件夹的目录
 + (NSString *)chatDirectoryPathForUid:(NSString *)uid {
     //uid
-    NSString *pathComponent = [[self uidDirectoryByUid:uid] stringByAppendingPathComponent:kNHFileManagerChatDirectoryName];
+    NSString *pathComponent = [[self uidDirectoryPathByUid:uid] stringByAppendingPathComponent:kNHFileManagerChatDirectoryName];
     
-//    NSString *chatDirectory = [FCFileManager pathForDocumentsDirectoryWithPath:pathComponent];
     if (![FCFileManager existsItemAtPath:pathComponent] ) {
         NSError *error;
-        if ([[NSFileManager defaultManager] createDirectoryAtPath:pathComponent withIntermediateDirectories:YES attributes:nil error:&error] && !error) {
-//        if ([FCFileManager createDirectoriesForFileAtPath:chatDirectory] && !error) {
-            NSLog(@"success");
+        if ([FCFileManager createDirectoriesForPath:pathComponent error:&error] && !error) {
+            NSLog(@"success created chat directory");
         }
         else {
             NSLog(@"chatDirectoryPathForUid: %@", error.description);
@@ -34,17 +32,27 @@ static NSString *kTempUID = @"89229";
     return pathComponent;
 }
 
-+ (NSString *)uidDirectoryByUid:(NSString *)uid {
++ (NSString *)uidDirectoryPathByUid:(NSString *)uid {
     NSString *chatDirectory = [FCFileManager pathForDocumentsDirectoryWithPath:uid];
     if (![FCFileManager existsItemAtPath:chatDirectory]) {
         NSError *error;
         if ([FCFileManager createDirectoriesForPath:chatDirectory error:&error] && !error) {
-            NSLog(@"success created uid string");
+            NSLog(@"success created uid directory path");
         }
         else {
-            NSLog(@"failure created uid string");
+            NSLog(@"failure created uid directory path");
         }
     }
     return chatDirectory;
+}
+
+
++ (NSDictionary *)attribuateOfItemAtPath:(NSString *)path {
+    NSError *error;
+    NSDictionary *attribuate = [FCFileManager attributesOfItemAtPath:path error:&error];
+    if (error) {
+        NSLog(@"%s, %@",__FUNCTION__, error.description);
+    }
+    return attribuate;
 }
 @end

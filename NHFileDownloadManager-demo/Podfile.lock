@@ -23,15 +23,18 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - FCFileManager (1.0.17)
+  - YYCache (0.9.0)
 
 DEPENDENCIES:
   - AFDownloadRequestOperation
   - AFNetworking
   - FCFileManager
+  - YYCache
 
 SPEC CHECKSUMS:
   AFDownloadRequestOperation: 748a1643423e1ddb23f2178f778087d4f0ae8ac7
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FCFileManager: 8bfc931ce2a6223676147e9baf0e8a65c691eca6
+  YYCache: 3e27834e8541b26ec11c7a2ae7a9c76eac87923b
 
 COCOAPODS: 0.39.0

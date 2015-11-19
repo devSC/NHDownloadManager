@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFURLSessionManager.h>
-
-typedef void (^ProgressBlock) (float progress);
-typedef void (^CompletionBlock) (NSURL *fileUrl);
-typedef void (^FailureBlock) (NSError *error);
+#import "NHFileDownloadHeader.h"
 
 @interface NHFileDownloadSession : NSObject
 
@@ -38,6 +35,6 @@ typedef void (^FailureBlock) (NSError *error);
 - (NSURLSessionDownloadTask *)downloadFileWithRequest:(NSURLRequest *)requset
                                        distinationUrl:(NSURL *)path
                                              progress:(ProgressBlock)progressHandler
-                                           completion:(CompletionBlock)completionHanlder
+                                           completion:(SuccessBlock)completionHanlder
                                               failure:(FailureBlock)failureHandler;
 @end

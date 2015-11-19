@@ -7,6 +7,8 @@
 //
 
 #import "NHFileDownloadSession.h"
+#import "NSString+MD5.h"
+
 @interface NHFileDownloadSession ()
 
 @property (strong, nonatomic) NSURLRequest *urlRequest;
@@ -17,7 +19,7 @@
 
 @property (strong, nonatomic) NSURLSessionDownloadTask *downloadTask;
 
-@property (copy, nonatomic) CompletionBlock completionHandler;
+@property (copy, nonatomic) SuccessBlock completionHandler;
 
 @property (copy, nonatomic) FailureBlock failureHandler;
 
@@ -62,7 +64,7 @@ static NSInteger const kNHFileDownloadRequestTimeOutInterver = 15;
 - (NSURLSessionDownloadTask *)downloadFileWithRequest:(NSURLRequest *)requset
                                        distinationUrl:(NSURL *)path
                                              progress:(ProgressBlock)progressHandler
-                                           completion:(CompletionBlock)completionHanlder
+                                           completion:(SuccessBlock)completionHanlder
                                               failure:(FailureBlock)failureHandler {
     
     NSProgress *progress = [NSProgress progressWithTotalUnitCount:1];
@@ -72,7 +74,7 @@ static NSInteger const kNHFileDownloadRequestTimeOutInterver = 15;
     
     self.downloadTask = [self.manager downloadTaskWithRequest:requset progress:&progress destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         
-        return [path URLByAppendingPathComponent:[response suggestedFilename]];
+        return [path URLByAppendingPathComponent:[[requset.URL.absoluteString md5] stringByAppendingPathExtension:response.suggestedFilename.pathExtension]];
         
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         

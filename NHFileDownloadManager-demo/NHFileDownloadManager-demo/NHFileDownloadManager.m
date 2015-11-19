@@ -10,9 +10,13 @@
 #import "NHFileDownloadSession.h"
 #import "NHFileDirectoryManager.h"
 
+#import <YYCache.h>
+
+
 @interface NHFileDownloadManager ()
 
 @property (strong, nonatomic) NSMutableArray *downLoadTasks;
+
 
 @end
 
@@ -45,7 +49,6 @@ SingletonImplementationWithClass
     //下载成功后, 需不需要做转码
     [session downloadFileWithRequest:request distinationUrl:url progress:progressHandler completion:^(NSURL *fileUrl) {
         successHandler(fileUrl);
-        [self dealFileWithFilePath:fileUrl.path];
         [self.downLoadTasks removeObject:session];
         
     } failure:failureHandler];
@@ -53,29 +56,6 @@ SingletonImplementationWithClass
     [self.downLoadTasks addObject:session];
     
     return session;
-}
-
-//处理文件信息. 如果是音频, 则转码, 然后.返回对应的转码后的地址
-- (void)dealFileWithFilePath:(NSString *)filePath {
-    
-    //取后缀
-    NSString *pathExtension = [filePath pathExtension];
-    //查看是否为音频
-    if (![pathExtension isEqualToString:@"amr"]) {
-        return;
-    }
-    else {
-        
-    }
-    
-    //
-    
-    //取到文件
-    NSDictionary *fileAttribuate = [NHFileDirectoryManager attribuateOfItemAtPath:filePath];
-    //查看文件后缀
-    NSLog(@"%@", fileAttribuate);
-    //如果是音频, 然后就处理转码 ->然后返回对应的地址
-    //
 }
 
 @end

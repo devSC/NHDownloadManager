@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NHFileDownloadHeader.h"
 
 @interface NHFileCache : NSObject
+SingletonDeclarationWithClass
+
+- (void)queryDiskCacheForKey:(NSString *)key done:(void(^)(NSDictionary *fileInfo))doneBlock;
+
+- (void)cacheObject:(id)object forKey:(id)key;
+
+- (NSDictionary *)dealFileWithFilePath:(NSString *)filePath;
 
 @end

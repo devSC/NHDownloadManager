@@ -7,12 +7,15 @@
 //
 
 #import "ViewController.h"
-#import "NHFileDownloadManager.h"
-
+//#import "NHFileDownloadManager.h"
+#import "NHFileServer.h"
 #import <FCFileManager.h>
+#import <YYCache.h>
+
 //http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg
 //@"http://115.238.175.14/music.qqvideo.tc.qq.com/e001845yise.mp4?type=mp4&fmt=mp4&vkey=C62C8F4593AEBCB8252C53B9852DF5D5A97A4D98316A41610517283564F4A3B975970AEE10A13C318F420C9026A9F99A07BE06E56EFA0C92D5D5A3272C1CF24C54604F6BB98ED8533AA18AA03176B939EB05C19B98BE15EB"
-static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b632f87512f6a7f436.jpg";
+//http://7xo0ke.com2.z0.glb.qiniucdn.com/FklhfJea-Qv1NOzk939JuXlVg8Rh
+static NSString *imageUrlString = @"http://7xo0ke.com2.z0.glb.qiniucdn.com/FklhfJea-Qv1NOzk939JuXlVg8Rh";
 @interface ViewController ()
 
 @end
@@ -23,16 +26,69 @@ static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b6
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
-                                                         progress:^(float progress) {
-                                                             NSLog(@"%f", progress);
-                                                         }
-                                                          success:^(NSURL *fileUrl) {
-                                                             NSLog(@"%@", fileUrl);
-                                                          } failure:^(NSError *error) {
-                                                              NSLog(@"%@", error.description);
+    YYMemoryCache *cache = [[YYMemoryCache alloc] init];
+    cache.name = @"sss";
+    
+    if (![cache objectForKey:@"2"]) {
+        [cache setObject:@"1" forKey:@"2"];
+    }
+    else {
+        NSLog(@"%@", [cache objectForKey:@"2"]);
+    }
+    
+    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
+    basePath = [basePath stringByAppendingPathComponent:@"FileCacheBenchmarkSmall"];
+    
+    YYKVStorage *yykvFile = [[YYKVStorage alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yykvFile"] type:YYKVStorageTypeFile];
+    YYKVStorageItem *item = [yykvFile getItemForKey:@"2"];
+    if (item) {
+        NSLog(@"%@", item.key);
+    }
+    else {
+        item = [[YYKVStorageItem alloc] init];
+        item.key = @"2";
+        item.value = [@"1" dataUsingEncoding:NSUTF8StringEncoding];;
+//        [yykvFile saveItem:item];
+        [yykvFile saveItemWithKey:@"2" value:[@"1" dataUsingEncoding:NSUTF8StringEncoding] filename:@"2" extendedData:nil];
+    }
+    
+    
+//    if (!) {
+//        [yykvFile setObject:@"sss" forKey:@"3"];
+//    }
+//    else {
+//        NSLog(@"%@", [yykvFile objectForKey:@"2"]);
+//    }
 
-                                                          }];
+
+    
+    YYCache *yCache = [[YYCache alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yykvFile"]];
+    if (![yCache objectForKey:@"2"]) {
+        [yCache setObject:@"sss" forKey:@"3"];
+    }
+    else {
+        NSLog(@"%@", [yCache objectForKey:@"2"]);
+    }
+    
+    
+    [[NHFileServer sharedInstance] server_fileInfoWithUrlString:imageUrlString progress:^(float progress) {
+        
+    } success:^(NSDictionary *fileInfo) {
+        NSLog(@"%@", fileInfo);
+    } failure:^(NSError *error) {
+        
+    }];
+    
+//    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
+//                                                         progress:^(float progress) {
+////                                                             NSLog(@"%f", progress);
+//                                                         }
+//                                                          success:^(NSURL *fileUrl, NSString *fileName) {
+//                                                             NSLog(@"%@", fileUrl);
+//                                                          } failure:^(NSError *error) {
+//                                                              NSLog(@"%@", error.description);
+//
+//                                                          }];
     
 //    [[NHFileDownloadManager sharedInstance] downloadWithUrlStirng:imageUrlString
 //                                                         progress:^(float progress) {

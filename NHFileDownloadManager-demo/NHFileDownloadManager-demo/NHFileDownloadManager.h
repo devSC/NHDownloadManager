@@ -10,13 +10,10 @@
 #import "NHFileDownloadHeader.h"
 
 
-typedef void (^ProgressBlock) (float progress);
-typedef void (^SuccessBlock) (NSURL *fileUrl);
-typedef void (^FailureBlock) (NSError *error);
+
+#define kNHFileDownloadManager [NHFileDownloadManager sharedInstance]
 
 @class NHFileDownloadSession;
-
-
 @interface NHFileDownloadManager : NSObject
 
 SingletonDeclarationWithClass

@@ -9,6 +9,10 @@
 #ifndef NHFileDownloadHeader_h
 #define NHFileDownloadHeader_h
 
+typedef void (^ProgressBlock) (float progress);
+typedef void (^SuccessBlock) (NSURL *fileUrl);
+typedef void (^FailureBlock) (NSError *error);
+
 #define SingletonDeclarationWithClass +(instancetype)sharedInstance;
 #define SingletonImplementationWithClass \
 + (instancetype)sharedInstance {\

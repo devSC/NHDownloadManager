@@ -10,10 +10,16 @@
  *  用来统一管理文件下载
  */
 #import <Foundation/Foundation.h>
+#import "NHFileDownloadHeader.h"
 
-@interface NSFileServer : NSObject
+typedef void (^ServerSuccessBlock) (NSDictionary *fileInfo);
 
-- (void)server_fileInfoWithUrlString:(NSString *)urlString;
-//- (BOOL)file_isExistAtPath:(NSString *)path otherwiseWillDownload:(n):;
+@interface NHFileServer : NSObject
+SingletonDeclarationWithClass
+
+- (void)server_fileInfoWithUrlString:(NSString *)urlString
+                            progress:(ProgressBlock)progressHandler
+                             success:(ServerSuccessBlock)successHandler
+                             failure:(FailureBlock)failureHandler;
 
 @end

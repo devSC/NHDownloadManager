@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C81A56281BFDD471009B3C81 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A56271BFDD471009B3C81 /* NSString+MD5.m */; };
 		C81A562D1BFDE1B8009B3C81 /* NHAudioTool+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A562A1BFDE1B8009B3C81 /* NHAudioTool+Helper.m */; };
 		C81A562E1BFDE1B8009B3C81 /* NHAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A562C1BFDE1B8009B3C81 /* NHAudioTool.m */; };
-		C829E8D81BFD7804000BC8B5 /* NHFileServer.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8D71BFD7804000BC8B5 /* NHFileServer.m */; };
-		C829E8DB1BFD943F000BC8B5 /* NHFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8DA1BFD943F000BC8B5 /* NHFileCache.m */; };
 		C829E8EB1BFDA0A8000BC8B5 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = C829E8DF1BFDA0A8000BC8B5 /* amrFileCodec.mm */; };
 		C829E8EC1BFDA0A8000BC8B5 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C829E8E11BFDA0A8000BC8B5 /* libopencore-amrnb.a */; };
 		C829E8ED1BFDA0A8000BC8B5 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C829E8E21BFDA0A8000BC8B5 /* libopencore-amrwb.a */; };
@@ -19,7 +16,6 @@
 		C829E8F11BFDA0B9000BC8B5 /* NHAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8F01BFDA0B9000BC8B5 /* NHAudioConverter.m */; };
 		C829E8F31BFDA0E5000BC8B5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C829E8F21BFDA0E5000BC8B5 /* AVFoundation.framework */; };
 		C829E8FC1BFDAA84000BC8B5 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = C829E8FB1BFDAA84000BC8B5 /* NSString+UUID.m */; };
-		C8595B0B1BFC11A400CF79DB /* NHFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8595B0A1BFC11A400CF79DB /* NHFileManager.m */; };
 		C85A48681BFACCE00058F508 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A48671BFACCE00058F508 /* main.m */; };
 		C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486A1BFACCE00058F508 /* AppDelegate.m */; };
 		C85A486E1BFACCE00058F508 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A486D1BFACCE00058F508 /* ViewController.m */; };
@@ -27,9 +23,13 @@
 		C85A48731BFACCE00058F508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85A48721BFACCE00058F508 /* Assets.xcassets */; };
 		C85A48761BFACCE00058F508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85A48741BFACCE00058F508 /* LaunchScreen.storyboard */; };
 		C85A48811BFACCE00058F508 /* NHFileDownloadManager_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A48801BFACCE00058F508 /* NHFileDownloadManager_demoTests.m */; };
-		C85A488D1BFAF1EA0058F508 /* NHFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */; };
-		C85A48901BFAF2A80058F508 /* NHFileDownloadSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */; };
 		E0857DB044718CE236FBA01C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F6FC1BC7C412BCB1D80A2 /* libPods.a */; };
+		FE0EFFD61BFE253A00F5DB65 /* NHFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFC71BFE253A00F5DB65 /* NHFileCache.m */; };
+		FE0EFFD71BFE253A00F5DB65 /* NHFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFCB1BFE253A00F5DB65 /* NHFileDownloadManager.m */; };
+		FE0EFFD81BFE253A00F5DB65 /* NHFileDownloadSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFCD1BFE253A00F5DB65 /* NHFileDownloadSession.m */; };
+		FE0EFFD91BFE253A00F5DB65 /* NHFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFD01BFE253A00F5DB65 /* NHFileManager.m */; };
+		FE0EFFDA1BFE253A00F5DB65 /* NHFileServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFD31BFE253A00F5DB65 /* NHFileServer.m */; };
+		FE0EFFDB1BFE253A00F5DB65 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0EFFD51BFE253A00F5DB65 /* NSString+MD5.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,16 +45,10 @@
 /* Begin PBXFileReference section */
 		1A2F6FC1BC7C412BCB1D80A2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B625B6FA88C15EF1FDF30C84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C81A56261BFDD471009B3C81 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		C81A56271BFDD471009B3C81 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		C81A56291BFDE1B8009B3C81 /* NHAudioTool+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NHAudioTool+Helper.h"; sourceTree = "<group>"; };
 		C81A562A1BFDE1B8009B3C81 /* NHAudioTool+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NHAudioTool+Helper.m"; sourceTree = "<group>"; };
 		C81A562B1BFDE1B8009B3C81 /* NHAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHAudioTool.h; sourceTree = "<group>"; };
 		C81A562C1BFDE1B8009B3C81 /* NHAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHAudioTool.m; sourceTree = "<group>"; };
-		C829E8D61BFD7804000BC8B5 /* NHFileServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileServer.h; sourceTree = "<group>"; };
-		C829E8D71BFD7804000BC8B5 /* NHFileServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileServer.m; sourceTree = "<group>"; };
-		C829E8D91BFD943F000BC8B5 /* NHFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileCache.h; sourceTree = "<group>"; };
-		C829E8DA1BFD943F000BC8B5 /* NHFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileCache.m; sourceTree = "<group>"; };
 		C829E8DE1BFDA0A8000BC8B5 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		C829E8DF1BFDA0A8000BC8B5 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		C829E8E11BFDA0A8000BC8B5 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
@@ -70,8 +64,6 @@
 		C829E8F21BFDA0E5000BC8B5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C829E8FA1BFDAA84000BC8B5 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
 		C829E8FB1BFDAA84000BC8B5 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
-		C8595B091BFC11A400CF79DB /* NHFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileManager.h; sourceTree = "<group>"; };
-		C8595B0A1BFC11A400CF79DB /* NHFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileManager.m; sourceTree = "<group>"; };
 		C85A48631BFACCE00058F508 /* NHFileDownloadManager-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NHFileDownloadManager-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85A48671BFACCE00058F508 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C85A48691BFACCE00058F508 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,12 +77,20 @@
 		C85A487C1BFACCE00058F508 /* NHFileDownloadManager-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NHFileDownloadManager-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85A48801BFACCE00058F508 /* NHFileDownloadManager_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadManager_demoTests.m; sourceTree = "<group>"; };
 		C85A48821BFACCE00058F508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C85A488B1BFAF1EA0058F508 /* NHFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadManager.h; sourceTree = "<group>"; };
-		C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadManager.m; sourceTree = "<group>"; };
-		C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadSession.h; sourceTree = "<group>"; };
-		C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadSession.m; sourceTree = "<group>"; };
 		DB80AF9FC10343833769C736 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		FEEAA4381BFB7481006B0745 /* NHFileDownloadHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadHeader.h; sourceTree = "<group>"; };
+		FE0EFFC61BFE253A00F5DB65 /* NHFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileCache.h; sourceTree = "<group>"; };
+		FE0EFFC71BFE253A00F5DB65 /* NHFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileCache.m; sourceTree = "<group>"; };
+		FE0EFFC81BFE253A00F5DB65 /* NHFileDownloadHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadHeader.h; sourceTree = "<group>"; };
+		FE0EFFCA1BFE253A00F5DB65 /* NHFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadManager.h; sourceTree = "<group>"; };
+		FE0EFFCB1BFE253A00F5DB65 /* NHFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadManager.m; sourceTree = "<group>"; };
+		FE0EFFCC1BFE253A00F5DB65 /* NHFileDownloadSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileDownloadSession.h; sourceTree = "<group>"; };
+		FE0EFFCD1BFE253A00F5DB65 /* NHFileDownloadSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileDownloadSession.m; sourceTree = "<group>"; };
+		FE0EFFCF1BFE253A00F5DB65 /* NHFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileManager.h; sourceTree = "<group>"; };
+		FE0EFFD01BFE253A00F5DB65 /* NHFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileManager.m; sourceTree = "<group>"; };
+		FE0EFFD21BFE253A00F5DB65 /* NHFileServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileServer.h; sourceTree = "<group>"; };
+		FE0EFFD31BFE253A00F5DB65 /* NHFileServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileServer.m; sourceTree = "<group>"; };
+		FE0EFFD41BFE253A00F5DB65 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		FE0EFFD51BFE253A00F5DB65 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,23 +196,11 @@
 		C85A48651BFACCE00058F508 /* NHFileDownloadManager-demo */ = {
 			isa = PBXGroup;
 			children = (
+				FE0EFFC41BFE253A00F5DB65 /* NHFileServer */,
 				C85A48691BFACCE00058F508 /* AppDelegate.h */,
 				C85A486A1BFACCE00058F508 /* AppDelegate.m */,
 				C85A486C1BFACCE00058F508 /* ViewController.h */,
 				C85A486D1BFACCE00058F508 /* ViewController.m */,
-				FEEAA4381BFB7481006B0745 /* NHFileDownloadHeader.h */,
-				C829E8D61BFD7804000BC8B5 /* NHFileServer.h */,
-				C829E8D71BFD7804000BC8B5 /* NHFileServer.m */,
-				C829E8D91BFD943F000BC8B5 /* NHFileCache.h */,
-				C829E8DA1BFD943F000BC8B5 /* NHFileCache.m */,
-				C81A56261BFDD471009B3C81 /* NSString+MD5.h */,
-				C81A56271BFDD471009B3C81 /* NSString+MD5.m */,
-				C85A488B1BFAF1EA0058F508 /* NHFileDownloadManager.h */,
-				C85A488C1BFAF1EA0058F508 /* NHFileDownloadManager.m */,
-				C85A488E1BFAF2A80058F508 /* NHFileDownloadSession.h */,
-				C85A488F1BFAF2A80058F508 /* NHFileDownloadSession.m */,
-				C8595B091BFC11A400CF79DB /* NHFileManager.h */,
-				C8595B0A1BFC11A400CF79DB /* NHFileManager.m */,
 				C85A486F1BFACCE00058F508 /* Main.storyboard */,
 				C85A48721BFACCE00058F508 /* Assets.xcassets */,
 				C85A48741BFACCE00058F508 /* LaunchScreen.storyboard */,
@@ -246,6 +234,58 @@
 				C85A48821BFACCE00058F508 /* Info.plist */,
 			);
 			path = "NHFileDownloadManager-demoTests";
+			sourceTree = "<group>";
+		};
+		FE0EFFC41BFE253A00F5DB65 /* NHFileServer */ = {
+			isa = PBXGroup;
+			children = (
+				FE0EFFC81BFE253A00F5DB65 /* NHFileDownloadHeader.h */,
+				FE0EFFC51BFE253A00F5DB65 /* NHFileCache */,
+				FE0EFFC91BFE253A00F5DB65 /* NHFileDownloadManager */,
+				FE0EFFCE1BFE253A00F5DB65 /* NHFileManager */,
+				FE0EFFD11BFE253A00F5DB65 /* NHFileServer */,
+				FE0EFFD41BFE253A00F5DB65 /* NSString+MD5.h */,
+				FE0EFFD51BFE253A00F5DB65 /* NSString+MD5.m */,
+			);
+			path = NHFileServer;
+			sourceTree = "<group>";
+		};
+		FE0EFFC51BFE253A00F5DB65 /* NHFileCache */ = {
+			isa = PBXGroup;
+			children = (
+				FE0EFFC61BFE253A00F5DB65 /* NHFileCache.h */,
+				FE0EFFC71BFE253A00F5DB65 /* NHFileCache.m */,
+			);
+			path = NHFileCache;
+			sourceTree = "<group>";
+		};
+		FE0EFFC91BFE253A00F5DB65 /* NHFileDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				FE0EFFCA1BFE253A00F5DB65 /* NHFileDownloadManager.h */,
+				FE0EFFCB1BFE253A00F5DB65 /* NHFileDownloadManager.m */,
+				FE0EFFCC1BFE253A00F5DB65 /* NHFileDownloadSession.h */,
+				FE0EFFCD1BFE253A00F5DB65 /* NHFileDownloadSession.m */,
+			);
+			path = NHFileDownloadManager;
+			sourceTree = "<group>";
+		};
+		FE0EFFCE1BFE253A00F5DB65 /* NHFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				FE0EFFCF1BFE253A00F5DB65 /* NHFileManager.h */,
+				FE0EFFD01BFE253A00F5DB65 /* NHFileManager.m */,
+			);
+			path = NHFileManager;
+			sourceTree = "<group>";
+		};
+		FE0EFFD11BFE253A00F5DB65 /* NHFileServer */ = {
+			isa = PBXGroup;
+			children = (
+				FE0EFFD21BFE253A00F5DB65 /* NHFileServer.h */,
+				FE0EFFD31BFE253A00F5DB65 /* NHFileServer.m */,
+			);
+			path = NHFileServer;
 			sourceTree = "<group>";
 		};
 		FE56D4BC2576A061D6FE2778 /* Frameworks */ = {
@@ -410,20 +450,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C85A48901BFAF2A80058F508 /* NHFileDownloadSession.m in Sources */,
+				FE0EFFD81BFE253A00F5DB65 /* NHFileDownloadSession.m in Sources */,
 				C85A486E1BFACCE00058F508 /* ViewController.m in Sources */,
-				C829E8DB1BFD943F000BC8B5 /* NHFileCache.m in Sources */,
-				C829E8D81BFD7804000BC8B5 /* NHFileServer.m in Sources */,
+				FE0EFFDA1BFE253A00F5DB65 /* NHFileServer.m in Sources */,
 				C85A486B1BFACCE00058F508 /* AppDelegate.m in Sources */,
 				C829E8EE1BFDA0A8000BC8B5 /* VoiceConverter.mm in Sources */,
 				C81A562D1BFDE1B8009B3C81 /* NHAudioTool+Helper.m in Sources */,
+				FE0EFFD71BFE253A00F5DB65 /* NHFileDownloadManager.m in Sources */,
+				FE0EFFD61BFE253A00F5DB65 /* NHFileCache.m in Sources */,
 				C829E8FC1BFDAA84000BC8B5 /* NSString+UUID.m in Sources */,
-				C8595B0B1BFC11A400CF79DB /* NHFileManager.m in Sources */,
 				C829E8EB1BFDA0A8000BC8B5 /* amrFileCodec.mm in Sources */,
 				C85A48681BFACCE00058F508 /* main.m in Sources */,
-				C81A56281BFDD471009B3C81 /* NSString+MD5.m in Sources */,
-				C85A488D1BFAF1EA0058F508 /* NHFileDownloadManager.m in Sources */,
 				C829E8F11BFDA0B9000BC8B5 /* NHAudioConverter.m in Sources */,
+				FE0EFFDB1BFE253A00F5DB65 /* NSString+MD5.m in Sources */,
+				FE0EFFD91BFE253A00F5DB65 /* NHFileManager.m in Sources */,
 				C81A562E1BFDE1B8009B3C81 /* NHAudioTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

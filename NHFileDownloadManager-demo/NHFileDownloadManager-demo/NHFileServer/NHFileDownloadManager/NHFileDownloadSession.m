@@ -34,7 +34,7 @@ static NSInteger const kNHFileDownloadRequestTimeOutInterver = 15;
 @implementation NHFileDownloadSession
 - (void)dealloc
 {
-    
+
 }
 @synthesize urlRequest = _urlRequest;
 @synthesize manager = _manager;

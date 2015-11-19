@@ -54,9 +54,12 @@ SingletonImplementationWithClass
         }
         else {
             [kNHFileDownloadManager downloadWithUrlStirng:urlString progress:progressHandler success:^(NSURL *fileUrl) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    successHandler([self.cache dealFileAtPath:fileUrl.path cacheForKey:urlString]);
-                });
+                    [self.cache fileInfoAtPath:fileUrl.path cacheForKey:urlString done:^(NSDictionary *info) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            successHandler(info);
+                        });
+                    }];
+
             } failure:failureHandler];
         }
     }];

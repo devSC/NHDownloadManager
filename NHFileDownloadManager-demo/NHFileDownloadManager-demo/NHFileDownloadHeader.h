@@ -13,6 +13,8 @@ typedef void (^ProgressBlock) (float progress);
 typedef void (^SuccessBlock) (NSURL *fileUrl);
 typedef void (^FailureBlock) (NSError *error);
 
+static NSString * const NHFileCachePath = @"NHFileCachePath";
+
 #define SingletonDeclarationWithClass +(instancetype)sharedInstance;
 #define SingletonImplementationWithClass \
 + (instancetype)sharedInstance {\

@@ -17,6 +17,14 @@ typedef void (^ServerSuccessBlock) (NSDictionary *fileInfo);
 @interface NHFileServer : NSObject
 SingletonDeclarationWithClass
 
+/**
+ *  获取文件信息方法
+ *  优先检查是否有缓存, 无缓存后, 就会走下载方法
+ *  @param urlString       连接地址
+ *  @param progressHandler 进度回调
+ *  @param successHandler  成功回调
+ *  @param failureHandler  失败回调
+ */
 - (void)server_fileInfoWithUrlString:(NSString *)urlString
                             progress:(ProgressBlock)progressHandler
                              success:(ServerSuccessBlock)successHandler

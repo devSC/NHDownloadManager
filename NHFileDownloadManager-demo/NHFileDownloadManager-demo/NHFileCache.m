@@ -25,7 +25,9 @@
 @end
 
 //static NSString const *NHFileKVStorageName =;
+
 static dispatch_queue_t _cacheQueue;
+char *kNHFileCacheQueue = "com.being.NHFileCache";
 
 @implementation NHFileCache
 SingletonImplementationWithClass
@@ -34,10 +36,7 @@ SingletonImplementationWithClass
 {
     self = [super init];
     if (self) {
-        _cacheQueue = dispatch_queue_create("com.being.NHFileCache", NULL);
-        
-        self.audioTool = [[NHAudioTool alloc] init];
-
+        _cacheQueue = dispatch_queue_create(kNHFileCacheQueue, NULL);
     }
     return self;
 }
@@ -56,7 +55,7 @@ SingletonImplementationWithClass
 //            NSData *itemValue = [self.kvStorage getItemValueForKey:key];;
             YYKVStorageItem *item = [self.kvStorage getItemForKey:key];
             if (item) {
-                //如果value存在    //应该保存的是视频文件的document下的地址
+                //如果value存在
                 fileInfo = [NSKeyedUnarchiver unarchiveObjectWithData:item.value];
                 if (fileInfo) {
                     [self.memoryCache setObject:fileInfo forKey:key];
@@ -80,18 +79,52 @@ SingletonImplementationWithClass
                     NSString *videoPath = [filePath stringByAppendingPathExtension:@"mp4"];
                     if ([NHFileManager existsItemAtPath:videoPath]) {
                         
-                        fileInfo = @{@"filePath" : [NHFileManager exceptDocumentPath:videoPath]};
+                        fileInfo = @{NHFileCachePath : [NHFileManager exceptDocumentPath:videoPath]};
                         [self cacheObject:fileInfo forKey:key];
                     }
                 }
             }
         }
-        //4.不存在则返回nil
         doneBlock(fileInfo);
     });
 }
 
+//处理文件信息. 如果是音频, 则转码, 然后.返回对应的转码后的地址信息
+- (void)fileInfoAtPath:(NSString *)filePath cacheForKey:(NSString *)key done:(void(^)(NSDictionary *info))doneBlock {
+    
+    dispatch_async(_cacheQueue, ^{
+        NSString *fileDirectoryPath = [NHFileManager exceptDocumentPath:filePath];
+        if (!fileDirectoryPath) {
+            doneBlock(nil);
+            return;
+        }
+        //取后缀
+        NSString *pathExtension = [filePath pathExtension];
+        NSDictionary *fileInfo = nil;
+        //查看是否为音频
+        if ([pathExtension isEqualToString:@"amr"]) {
+            //这里需要转格式
+            NSString *wavPath = [filePath stringByReplacingOccurrencesOfString:@".amr" withString:@".wav"];
+            if ([NHAudioConverter convertAmrToWavWithAmrPath:filePath wavSavePath:wavPath]) {
+                //获得wav的地址信息
+                fileInfo = [self _wavFileInfoAtFilePath:wavPath];
+            }
+        }
+        else {
+            fileInfo = @{NHFileCachePath : fileDirectoryPath};
+        }
+        
+        //保存转格式后的地址
+        [self cacheObject:fileInfo forKey:key];
+        doneBlock(fileInfo);
+    });
+}
+
+
 - (id)objectForKey:(id)key {
+    if (!key) {
+        return nil;
+    }
     //get memory cache
     id value = [self _objectForKey:key];
     if (!value) {
@@ -101,41 +134,20 @@ SingletonImplementationWithClass
 }
 
 - (void)cacheObject:(id<NSCoding>)object forKey:(id)key {
-    
+#if DEBUG
     NSAssert(object, @"cache object can't be nil");
+    NSAssert(object, @"cache object can't be nil");
+#endif
+    if (!object || !key) {
+        return;
+    }
+    
     [self.memoryCache setObject:object forKey:key];
     if (![self.kvStorage saveItemWithKey:key value:[NSKeyedArchiver archivedDataWithRootObject:object] filename:@"2223" extendedData:nil]) {
         NSLog(@"###warning----- NHFileCache cache failed, key:%@ object:%@", key, object);
     };
 }
 
-//处理文件信息. 如果是音频, 则转码, 然后.返回对应的转码后的地址信息
-- (NSDictionary *)dealFileAtPath:(NSString *)filePath cacheForKey:(NSString *)key {
-    
-    NSString *fileDirectoryPath = [NHFileManager exceptDocumentPath:filePath];
-    if (!fileDirectoryPath) {
-        return nil;
-    }
-    //取后缀
-    NSString *pathExtension = [filePath pathExtension];
-    NSDictionary *fileInfo = nil;
-    //查看是否为音频
-    if ([pathExtension isEqualToString:@"amr"]) {
-        //这里需要转格式
-        NSString *wavPath = [filePath stringByReplacingOccurrencesOfString:@".amr" withString:@".wav"];
-        if ([NHAudioConverter convertAmrToWavWithAmrPath:filePath wavSavePath:wavPath]) {
-            //获得wav的地址信息
-            fileInfo = [self _wavFileInfoAtFilePath:wavPath];
-        }
-    }
-    else {
-        fileInfo = @{@"filePath" : fileDirectoryPath};
-    }
-    
-    //保存转格式后的地址
-    [self cacheObject:fileInfo forKey:key];
-    return fileInfo;
-}
 
 #pragma mark - Pravite methpd
 - (NSDictionary *)_wavFileInfoAtFilePath:(NSString *)filePath {
@@ -149,6 +161,14 @@ SingletonImplementationWithClass
 }
 
 #pragma mark - Getter
+
+- (NHAudioTool *)audioTool {
+    if (!_audioTool) {
+        _audioTool = [[NHAudioTool alloc] init];
+    }
+    return _audioTool;
+}
+
 - (YYMemoryCache *)memoryCache {
     if (!_memoryCache) {
         _memoryCache = [[YYMemoryCache alloc] init];

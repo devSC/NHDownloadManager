@@ -67,7 +67,7 @@ static NSString *imageUrlString = @"http://7xo0ke.com2.z0.glb.qiniucdn.com/Fklhf
 }
 
 - (void)startToDownloadFile:(NSString *)urlString {
-    [[NHFileServer sharedInstance] server_fileInfoWithUrlString:urlString progress:^(float progress) {
+    [NHFileServer server_fileInfoWithUrlString:urlString progress:^(float progress) {
         NSLog(@"---%f", progress);
     } success:^(NSDictionary *fileInfo) {
         NSLog(@"%@", fileInfo);

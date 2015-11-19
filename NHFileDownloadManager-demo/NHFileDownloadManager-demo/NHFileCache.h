@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NHFileDownloadHeader.h"
 
+#define kNHFileCache [NHFileCache sharedInstance]
 @interface NHFileCache : NSObject
 SingletonDeclarationWithClass
 

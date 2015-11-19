@@ -10,42 +10,16 @@
 
 #import "NHFileDownloadManager.h"
 
-#import "NHFileManager.h"
-
-
-#import "NHAudioConverter.h"
-
 #import "NHFileCache.h"
-
-#import <YYCache.h>
-
-
-@interface NHFileServer ()
-
-@property (strong, nonatomic) NHFileCache *cache;
-
-@end
 
 @implementation NHFileServer
 
-SingletonImplementationWithClass
-
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.cache = [[NHFileCache alloc] init];
-    }
-    return self;
-}
-
-- (void)server_fileInfoWithUrlString:(NSString *)urlString
++ (void)server_fileInfoWithUrlString:(NSString *)urlString
                             progress:(ProgressBlock)progressHandler
                              success:(ServerSuccessBlock)successHandler
                              failure:(FailureBlock)failureHandler {
     
-    [self.cache queryCacheForKey:urlString done:^(NSDictionary *fileInfo) {
+    [kNHFileCache queryCacheForKey:urlString done:^(NSDictionary *fileInfo) {
         if (fileInfo) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 progressHandler(1.0);
@@ -54,7 +28,7 @@ SingletonImplementationWithClass
         }
         else {
             [kNHFileDownloadManager downloadWithUrlStirng:urlString progress:progressHandler success:^(NSURL *fileUrl) {
-                    [self.cache fileInfoAtPath:fileUrl.path cacheForKey:urlString done:^(NSDictionary *info) {
+                    [kNHFileCache fileInfoAtPath:fileUrl.path cacheForKey:urlString done:^(NSDictionary *info) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             successHandler(info);
                         });

@@ -38,7 +38,7 @@ static NSString *imageUrlString = @"http://img.zcool.cn/community/01d9a8564a94b6
     } success:^(NSDictionary *fileInfo) {
         NSLog(@"%@", fileInfo);
     } failure:^(NSError *error) {
-        
+        NSLog(@"%@", error.description);
     }];
 
 }

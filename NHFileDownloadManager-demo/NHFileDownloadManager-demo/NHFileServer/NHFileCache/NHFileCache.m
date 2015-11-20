@@ -79,7 +79,8 @@ SingletonImplementationWithClass
                     NSString *videoPath = [filePath stringByAppendingPathExtension:@"mp4"];
                     if ([NHFileManager existsItemAtPath:videoPath]) {
                         
-                        fileInfo = @{NHFileCachePath : [NHFileManager exceptDocumentPath:videoPath]};
+                        fileInfo = @{NHFilePath : [NHFileManager exceptDocumentPath:videoPath],
+                                     NHFileName : [videoPath lastPathComponent]};
                         [self cacheObject:fileInfo forKey:key];
                     }
                 }
@@ -111,7 +112,8 @@ SingletonImplementationWithClass
             }
         }
         else {
-            fileInfo = @{NHFileCachePath : fileDirectoryPath};
+            fileInfo = @{NHFilePath : fileDirectoryPath,
+                         NHFileName : [filePath lastPathComponent]};
         }
         
         //保存转格式后的地址

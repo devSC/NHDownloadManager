@@ -57,7 +57,6 @@
     //所有省份
     self.province = [[NSArray alloc] initWithArray: provinceTmp];
   
-    NSMutableArray *mutalArray = [NSMutableArray array];
     NSMutableDictionary *city_Dic = [NSMutableDictionary dictionary];
 
     for (int i = 0; i < self.province.count; i ++) {
@@ -68,16 +67,36 @@
 
         //当前省份信息 里面包含了下一级和下下一级的信息
         NSDictionary *provinceInfo = [self.areaDic objectForKey:index];
+        
 
         //选取了北京, 则北京的下一级信息
         NSDictionary *dic = [provinceInfo objectForKey:selectedProvinceName];
 
         //市的index 0
         NSArray *cityKeyArray = [dic allKeys];
+        
+        NSArray *sortedArray = [cityKeyArray sortedArrayUsingComparator: ^(id obj1, id obj2) {
+            
+            if ([obj1 integerValue] > [obj2 integerValue]) {
+                return (NSComparisonResult)NSOrderedDescending;//递减
+            }
+            
+            if ([obj1 integerValue] < [obj2 integerValue]) {
+                return (NSComparisonResult)NSOrderedAscending;//上升
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        }];
+//        
+//        NSMutableArray *array = [[NSMutableArray alloc] init];
+//        for (int i=0; i<[sortedArray count]; i++) {
+//            NSString *index = [sortedArray objectAtIndex:i];
+//            NSArray *temp = [[dic objectForKey: index] allKeys];
+//            [array addObject: [temp objectAtIndex:0]];
+//        }
 
-        for (int j = 0; j < cityKeyArray.count; j ++) {
+        for (int j = 0; j < sortedArray.count; j ++) {
 
-            NSDictionary *cityDic = [dic objectForKey:[cityKeyArray objectAtIndex:j]];
+            NSDictionary *cityDic = [dic objectForKey:[sortedArray objectAtIndex:j]];
             NSArray *cityArray = [[NSArray alloc] initWithArray:[cityDic allKeys]];
             //市名称 
             NSString *selectedCity = [cityArray objectAtIndex:0];
@@ -121,7 +140,8 @@
                                                  @"city_code" : cityCode};
                     [city_Dic setObject:dictionary forKey:district];
                     //区
-                    NSLog(@"%@", dictionary);
+//                    NSLog(@"%@", dictionary);
+                    NSLog(@"省:%@, city: %@, 县区: %@", selectedProvinceName, selectedCity, district);
                 }
                 
             }];

@@ -128,23 +128,24 @@
                 cityCode = @"0906";
             }
             
-            NSArray<NSString *> *districtArray = cityDic[selectedCity];
-            
-            [districtArray enumerateObjectsUsingBlock:^(NSString * _Nonnull district, NSUInteger idx, BOOL * _Nonnull stop) {
-                //
-                if (cityCode) {
+            if (cityCode) {
+                NSArray<NSString *> *districtArray = cityDic[selectedCity];
+                
+                NSMutableDictionary *districtDic = [NSMutableDictionary dictionary];
+                [districtArray enumerateObjectsUsingBlock:^(NSString * _Nonnull district, NSUInteger idx, BOOL * _Nonnull stop) {
+                    //
                     NSDictionary *dictionary = @{@"info" : cityDic,
                                                  @"province_index" : @(i).stringValue,
                                                  @"city_index" : @(j).stringValue,
                                                  @"district_index" : @(idx).stringValue,
-                                                 @"city_code" : cityCode};
-                    [city_Dic setObject:dictionary forKey:district];
-                    //区
-//                    NSLog(@"%@", dictionary);
+                                                 };
+                    //                                                 @"city_code" : cityCode};
+                    [districtDic setObject:dictionary forKey:district];
+                    //区//                    NSLog(@"%@", dictionary);
                     NSLog(@"省:%@, city: %@, 县区: %@", selectedProvinceName, selectedCity, district);
-                }
-                
-            }];
+                }];
+                [city_Dic setObject:districtDic forKey:cityCode];
+            }
         }
     }
     NSDictionary *detailInfo = city_Dic;
@@ -155,7 +156,7 @@
         NSLog(@"Success: %@", filePath);
     }
     
-    NSLog(@"%@", detailInfo[@"岐山县"]);
+    NSLog(@"%@", detailInfo[@"0917"]);
 }
 
 - (void)didReceiveMemoryWarning {

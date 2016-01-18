@@ -116,6 +116,7 @@
 		C86693EA1C4CE1DD003B1F2A /* Expression_98@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86693861C4CE1DC003B1F2A /* Expression_98@2x.png */; };
 		C86693EB1C4CE1DD003B1F2A /* Expression_99@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86693871C4CE1DC003B1F2A /* Expression_99@2x.png */; };
 		C86693EC1C4CE1DD003B1F2A /* Expression_100@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86693881C4CE1DC003B1F2A /* Expression_100@2x.png */; };
+		FE370CDC1C4D35C600AB7D9E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = FE370CDB1C4D35C600AB7D9E /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +245,8 @@
 		C86693861C4CE1DC003B1F2A /* Expression_98@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Expression_98@2x.png"; sourceTree = "<group>"; };
 		C86693871C4CE1DC003B1F2A /* Expression_99@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Expression_99@2x.png"; sourceTree = "<group>"; };
 		C86693881C4CE1DC003B1F2A /* Expression_100@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Expression_100@2x.png"; sourceTree = "<group>"; };
+		FE370CDA1C4D35C600AB7D9E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		FE370CDB1C4D35C600AB7D9E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +288,8 @@
 		C84216671C3BCF8900680C8E /* NHTest */ = {
 			isa = PBXGroup;
 			children = (
+				FE370CDA1C4D35C600AB7D9E /* RegexKitLite.h */,
+				FE370CDB1C4D35C600AB7D9E /* RegexKitLite.m */,
 				C842166B1C3BCF8900680C8E /* AppDelegate.h */,
 				C842166C1C3BCF8900680C8E /* AppDelegate.m */,
 				C842166E1C3BCF8900680C8E /* ViewController.h */,
@@ -621,6 +626,7 @@
 			files = (
 				C84216701C3BCF8900680C8E /* ViewController.m in Sources */,
 				C842166D1C3BCF8900680C8E /* AppDelegate.m in Sources */,
+				FE370CDC1C4D35C600AB7D9E /* RegexKitLite.m in Sources */,
 				C842166A1C3BCF8900680C8E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
